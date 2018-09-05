@@ -64,13 +64,13 @@ body{
 	color: #fff;
 }
 .daohang .top-right{
-	width: 300px;
+	width: 400px;
 	height: 40px;
 	float: right;
 }
 .daohang .top-right a{
 	display: block;
-	width: 60px;
+	width: 100px;
 	height: 40px;
 	font-size: 14px;
 	color: #b0b0b0;
@@ -80,16 +80,18 @@ body{
 	line-height: 40px;
 	text-decoration: none;
 	float: left;
-	margin-left: 10px;
+	padding:0 8px;
+	/*margin-left: 10px;*/
 }
 .daohang .top-right a:hover{
 	color: #fff;
 }
 .daohang .top-right a:nth-child(4){
-	width: 75px;
+	width: 100px;
 	height: 40px;
 	float: right;
 	position: relative;
+	/*padding:2px 8px;*/
 }
 .daohang .top-right .red{
 	width: 300px;
@@ -201,13 +203,19 @@ body{
 	float: right;
 	position: relative;
 }
-input{
-	display: block;
+input:nth-child(1){
+	/*display: block;*/
 	margin: 0 auto;
 	margin-top: 25px;
 	float: left;
 	margin-left: 105px;
+	border:1px solid #e0e0e0;
+	transition: all .5s;
+
 	
+}
+input:nth-child(1):hover{
+	border:1px solid #999999;
 }
 input.text{
 	
@@ -244,15 +252,42 @@ input.text{
 	background-color: #ff6700;
 	color: #fff;
 }
-input.sumbit{
+.header .right .summit-box{
+	width:50px;
+	height: 50px;
+	float:left;
+	margin-top: 25px;
+	position: relative;
+}
+.header .right .summit-box .icon-sousuo{
+	color:#333;
+	font-size: 20px;
+	position: absolute;
+	top:14px;
+	right:14px;
+}
+.header .right .summit-box .sumbit{
+	/*display: block;*/
+	/*font-size: 20px;*/
+	/*color:#333;*/
 	background-color: #fff;
 	margin-left: 0;
+	margin-top:0;
 	width: 50px;
 	height: 50px;
-	background-image: url('../img/search-black.png');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 25px 25px; 
+	border:1px solid #e0e0e0;
+	border-left:none;
+	/*margin-top: 25px;*/
+	/*background-image: url('../img/search-black.png');*/
+	/*background-position: center;*/
+	/*background-repeat: no-repeat;*/
+	/*background-size: 25px 25px; */
+}
+.header .right .summit-box:hover .sumbit{
+	background-color: #ff6700;
+}
+.header .right .summit-box:hover .icon-sousuo{
+	color:#fff;
 }
 .banner .container{
 	height: 460px;
@@ -585,6 +620,10 @@ input.sumbit{
 	color: #b0b0b0;
 	cursor: pointer;
 }
+.title .more .icon-more:hover{
+	color: #ff6700;
+	transition: all .5s;
+}
 .title .more .icon-more1-copy{
 	width: 40px;
 	height: 20px;
@@ -800,7 +839,7 @@ input.sumbit{
 }
 .box-hd li:nth-child(1){
 	height: 608px;
-	background-color: red;
+	/*background-color: red;*/
 	margin-left: 0;
 	background-image: url('../img/14.jpg');
 	background-size: cover;
@@ -847,13 +886,15 @@ input.sumbit{
 	width: 1226px;
 	margin: 0 auto;
 	position: relative;
+	overflow: hidden;
 /* 	background-color: red; */
 }
 .box-second .more{
-	height: 58px;
+	/*height: 58px;*/
 	position: absolute;
-	top: 0;
+	top: 20px;
 	right: 0;
+	padding-top:24px;
 	
 }
 
@@ -862,11 +903,12 @@ input.sumbit{
 	text-decoration: none;
 	font-size: 16px;
 	color: #424242;
-	line-height: 58px;
+	/*line-height: 58px;*/
 	float: left;
 	margin-left: 30px;
+	/*padding-top: 16px;*/
 }
-.box-second .more a:hover{
+.box-second .more a.hot{
 	color: #ff6700;
 	border-bottom: 1px solid #ff6700;
 	transition: all .5s;
@@ -881,6 +923,7 @@ input.sumbit{
 	color: #333;
 	font-weight: 200;
 	margin-top: 20px;
+	padding-top:10px;
 }
 .box-second .title{
 	font-size: 22px;
@@ -888,12 +931,36 @@ input.sumbit{
 	line-height: 58px;
 	color: #333;
 }
-.box-second li{
+.box-second .container{
+	display: flex;
+	flex-direction: row;
+}
+.box-second .left1{
+	width:250px;
+	height:614px;
+}
+.box-second .right1{
+	width:992px;
+	height:614px;
+	position: absolute;
+	top: 0;
+	left: 250px;
+	display: none;
+}
+.box-second ul{
+	width:992px;
+	height:614px;
+	display: flex;
+	justify-content: space-between;
+	align-content: space-between;
+	flex-wrap: wrap;
+}
+.box-second ul li{
 	width: 234px;
 	height: 300px;
 	float: left;
-	margin-left: 14px;
-	margin-bottom: 7px;
+	margin-right: 14px;
+	/*margin-bottom: 7px;*/
 	background-color: #fff;
 	overflow: hidden;
 	position: relative;
@@ -919,7 +986,7 @@ input.sumbit{
 	width: 234px;
 	height: 80px;
 	background-color: #ff6700;
-	margin-top: 51px;
+	margin-top: 53px;
 	transition: all .5s;
 	padding: 8px 40px;
 }
@@ -951,41 +1018,84 @@ input.sumbit{
 }
 .box-second .container{
 	margin-top: 20px;
-	overflow: hidden;
+	/*overflow: hidden;*/
+	position: relative;
 }
-.box-second .container .one{
+.box-second .container .left1 .one{
+	width: 234px;
+	height: 300px;
 	margin-left: 0;
+	margin-bottom:14px;
 	background-image: url('../img/16.jpg');
 	background-size: cover;
 	background-position: center;
 }
+.box-second .container .left1 .one:hover{
+	box-shadow: 2px 5px 8px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+	transition: all .5s;
+}
+.box-second .container .left1 .six:hover{
+	box-shadow: 2px 5px 8px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+	transition: all .5s;
+}
 
 .box-second .container .six{
+	width: 234px;
+	height: 300px;
 	margin-left: 0;
 	background-image: url('../img/15.jpg');
 	background-size: cover;
 	background-position: center;
 }
-.box-second .ten{
+.box-second ul{
+	/*background: red;*/
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.box-second ul .last{
+	background-color: #f5f5f5;
+}
+.box-second ul .last:hover{
+	box-shadow: none;
+	transform: none;
+	/*transition: all .5s;*/
+}
+.box-second ul .last .ten{
 	width: 234px;
 	height: 143px;
+	background-color: #fff;
+	margin-bottom: 14px;
 	/* background-color: green; */
 }
-.box-second .ten img{
+.box-second ul .last .ten:hover{
+	box-shadow: 2px 5px 8px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+	transition: all .5s;
+}
+.box-second ul .last .eleven:hover{
+	box-shadow: 2px 5px 8px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+	transition: all .5s;
+}
+.box-second ul .last .ten img{
 	width: 80px;
 	height: 80px;
 	margin-top: 32px;
 	margin-left: 134px;
 
 }
-.box-second .eleven{
+.box-second ul .last .eleven{
 	width: 234px;
 	height: 143px;
 	box-sizing: border-box;
 	position: relative;
+	background-color: #fff;
 		/* background-color: green; */
 }
-.box-second .eleven .through{
+.box-second ul .last .eleven .through{
 	width: 80px;
 	height: 80px;
 	color: #ff6700;
@@ -995,7 +1105,7 @@ input.sumbit{
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	right: 0;
+	right: 20px;
 	margin: auto 0;
 }
 .box-second li a{
@@ -1019,24 +1129,24 @@ input.sumbit{
 .box-second li .price del{
 	color: #b0b0b0;
 }
-.box-second .ten a{
+.box-second ul .last .ten a{
 	margin-left: -50px;
 	margin-top: -80px;
 
 }
-.box-second .ten .price{
+.box-second ul .last .ten .price{
 	margin-left: -100px;
 	margin-top: -3px;
 
 }
-.box-second .eleven a{
+.box-second ul .last .eleven a{
 	display: block;
 	width: 80px;
 	padding-top: 50px;
 	margin-left: 50px;
 
 }
-.box-second .eleven .price1 span{
+.box-second ul .last .eleven .price1 span{
 	display: block;
 	width: 28px;
 	color: #333;
@@ -1086,6 +1196,10 @@ input.sumbit{
 	margin-top: 20px;
 	color: #b0b0b0;
 }
+.box-third .more .icon-more:hover{
+	color: #ff6700;
+	transition: all .5s;
+}
 .box-third .more .icon-more1-copy{
 	width: 40px;
 	height: 20px;
@@ -1101,6 +1215,7 @@ input.sumbit{
 }
 .box-third .more .icon-more1-copy:hover{
 	color: #ff6700;
+	transition: all .5s;
 }
 .box-third ul{
 	width:3780px;
@@ -1767,7 +1882,6 @@ footer .slogan{
 .back .bar-link{
 	width: 82px;
 	height: 90px;
-	
 	overflow: hidden;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	
@@ -1790,6 +1904,7 @@ footer .slogan{
 	color: #333;
 	opacity: 0.6;
 	padding-top: 20px;
+	cursor: pointer;
 }
 .back .bar-link .bar-sort:hover{
 	color: #ff6700;

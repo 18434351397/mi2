@@ -63,6 +63,55 @@ function Olunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
         t=setInterval(move,second);
     }
 }
+function Zlunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
+    //透明度轮播图
+    //1.移入轮播点显示对应的图片
+    //2 自动轮播
+    let num=0;
+    imgs[0].style.opacity=1;
+    dots[0].classList.add(activeClass);
+    //遍历得到每一个轮播点
+    for(let i=0;i<imgs.length;i++){
+        //点击每一个轮播点是发生的函数
+        dots[i].onclick=function () {
+            //遍历的
+            for(let j=0;j<imgs.length;j++){
+                //清除点击以外的所有类名
+                dots[j].classList.remove(activeClass);
+                //清除轮播点相对应图片所添加的透明度
+                imgs[j].style.opacity=0;
+            }
+            //给点击的轮播点添加类名
+            dots[i].classList.add(activeClass);
+            //给轮播点相对应的图片添加透明度
+            imgs[i].style.opacity=1;
+            num=i;
+        }
+    }
+
+    //自动轮播
+    let t=setInterval(move,second);
+    function move() {
+        num++;
+        if(num==bannerNum){
+            num=0;
+        }
+        for(let j=0;j<imgs.length;j++){
+            dots[j].classList.remove(activeClass);
+            imgs[j].style.opacity=0;
+        }
+        imgs[num].style.opacity=1;
+        dots[num].classList.add(activeClass);
+    }
+    //鼠标移入停止
+    banner.onmouseover=function () {
+        clearInterval(t);
+    }
+    //鼠标移出，继续轮播
+    banner.onmouseout=function () {
+        t=setInterval(move,second);
+    }
+}
 
 //双下标轮播图
 // let imgs=document.querySelectorAll("img");
@@ -288,5 +337,13 @@ function shangou(button,miList,w) {
             time=0;
         }
         miList.style.transform=`translate(${(-w*time)}px)`;
+    }
+}
+function backs(back) {
+        back.onclick = function () {
+        animate(document.body, {scrollTop: 0}, 600);
+        animate(document.documentElement, {scrollTop: 0}, 600);
+        // document.body.scrollTop=0;
+        // document.documentElement.scrollTop=0;
     }
 }

@@ -65,13 +65,19 @@ window.onload=function () {
             }
             flag = false;
             moveL();
+            clearInterval(t);
         }
 
         rightBtn.onclick = function () {
             if (next == imgs.length - 1) {
                 return;
             }
+            if (!flag) {
+                return;
+            }
+            flag = false;
             move();
+            clearInterval(t);
         }
 
         //开关
@@ -123,6 +129,7 @@ window.onload=function () {
                 imgs[i].style.left = 0;
                 now = i;
                 next = i;
+                clearInterval(t);
             }
         }
         //窗口失去焦点时，停止时间函数
@@ -153,13 +160,13 @@ window.onload=function () {
         dots[0].classList.add(activeClass);
         let now = 0;
         let next = 0;
-        let flag = false;
+        let flag = true;
         //now = 0    next =0
 
         //               ++
         // left 0          left1200
         //left-1200        left:0
-        let t = setInterval(move, second);
+        // let t = setInterval(move, second);
 
         function move() {
             next++;
@@ -176,7 +183,7 @@ window.onload=function () {
             dots[next].classList.add(activeClass);
             now = next;
         }
-        clearInterval(t);
+        // clearInterval(t);
 
         function moveL() {
             next--;
@@ -203,13 +210,27 @@ window.onload=function () {
             flag = false;
             moveL();
         }
-
         rightBtn.onclick = function () {
-            if (next == imgs.length - 1) {
+            if (next == imgs.length-1) {
                 return;
             }
+            if (!flag) {
+                return;
+            }
+            flag = false;
             move();
         }
+
+        // rightBtn.onclick = function () {
+        //     if (next == imgs.length - 1) {
+        //         return;
+        //     }
+        //     // if (!flag) {
+        //     //     return;
+        //     // }
+        //     // flag = false;
+        //     move();
+        // }
 
         //开关
         //flag=false   ！flag=true
@@ -242,12 +263,12 @@ window.onload=function () {
         //     flag=false;
         //     move();
         // }
-        banner.onmouseenter = function () {
-            clearInterval(t);
-        }
-        banner.onmouseleave = function () {
-            // t=setInterval(move,second);
-        }
+        // banner.onmouseenter = function () {
+        //     clearInterval(t);
+        // }
+        // banner.onmouseleave = function () {
+        //     // t=setInterval(move,second);
+        // }
 
         //鼠标点击，变颜色
         for (let i = 0; i < imgs.length; i++) {
@@ -263,13 +284,13 @@ window.onload=function () {
             }
         }
         //窗口失去焦点时，停止时间函数
-        window.onblur = function () {
-            clearInterval(t);
-        }
-        //窗口获得焦点时，继续时间函数
-        window.onfocus = function () {
-            // t = setInterval(move, second);
-        }
+        // window.onblur = function () {
+        //     clearInterval(t);
+        // }
+        // //窗口获得焦点时，继续时间函数
+        // window.onfocus = function () {
+        //     // t = setInterval(move, second);
+        // }
 
 
     }
@@ -308,7 +329,28 @@ window.onload=function () {
     let miList=document.querySelector(".miList");
     let w=parseInt(getComputedStyle(miList,null).width)/2;
     // console.log(button);
-    shangou(button,miList,w);
+    shangou1(button,miList,w);
+    function shangou1(button,miList,w) {
+        // let button=document.querySelectorAll(".button");
+        // let miList=document.querySelector(".miList");
+        // let w=parseInt(getComputedStyle(miList,null).width)/3;
+        // console.log(button,miList,w);
+        let time=0;
+        button[1].onclick=function () {
+            time++;
+            if(time==2){
+                time=1;
+            }
+            miList.style.transform=`translate(${(-w*time)}px)`;
+        }
+        button[0].onclick=function () {
+            time--;
+            if(time==-1){
+                time=0;
+            }
+            miList.style.transform=`translate(${(-w*time)}px)`;
+        }
+    }
 
     let button1=document.querySelectorAll(".button1");
     let miList1=document.querySelector(".miList1");
@@ -318,8 +360,34 @@ window.onload=function () {
 
     let lis1=document.querySelectorAll(".header .nav .son-box");
     let son1=document.querySelectorAll(".header .nav .son-box a .son1");
-    console.log(lis1,son1);
+    // console.log(lis1,son1);
     xuanxiangka(lis1,son1);
 
+    let back = document.querySelector(".back");
+    // console.log(back);
+    backs(back);
+    // back.onclick = function () {
+    //     animate(document.body, {scrollTop: 0}, 600);
+    //     animate(document.documentElement, {scrollTop: 0}, 600);
+    //     // document.body.scrollTop=0;
+    //     // document.documentElement.scrollTop=0;
+    // }
+
+    let Second=document.querySelectorAll(".box-second .more a");
+    let uls=document.querySelectorAll(".box-second .right1");
+    // console.log(Second,uls);
+
+    uls[0].style.display="block";
+    Second[0].classList.add("hot");
+    for(let i=0;i<uls.length;i++){
+        Second[i].onmouseenter=function () {
+            for(let j=0;j<uls.length;j++){
+                uls[j].style.display="none";
+                Second[j].classList.remove("hot");
+            }
+            uls[i].style.display="block";
+            Second[i].classList.add("hot");
+        }
+    }
 
 }
