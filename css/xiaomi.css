@@ -128,12 +128,12 @@ body{
 	height: 100px;
 	background-color: #ffffff;
 	float: left;
-
+	position: relative;
 }
 .header .container{
 	height: 100px;
 	background-color: #fff;
-	position: relative;
+
 	/*overflow: hidden;*/
 }
 .header .logo{
@@ -160,10 +160,13 @@ body{
 	margin-top: 22px;
 }
 .header .nav{
-	width: 600px;
+	/*width: 600px;*/
 	height: 100px;
 	background-color: #fff;
 	float: left;
+	display: flex;
+	justify-content: space-between;
+
 }
 .header .nav .son-box{
 
@@ -171,7 +174,7 @@ body{
 	text-decoration: none;
 	line-height: 100px;
 	color: #333;
-	margin-left: 10px;
+	/*margin-left: 10px;*/
 	float:left;
 
 }
@@ -181,18 +184,79 @@ body{
 	text-decoration: none;
 	line-height: 100px;
 	color: #333;
-	margin-left: 10px;
+	margin-left: 8px;
 	float:left;
+	padding-right:10px;
 }
 .header .nav .son-box a .son1{
-	width: 1496px;
+	width: 100%;
 	height:234px;
-	background-color: pink;
+	background-color: #fff;
+	border-top:1px solid #e0e0e0;
 	position: absolute;
 	top:100px;
-	left: -135px;
+	left: 0px;
 	z-index:999;
 	display: none;
+}
+.header .nav .son-box a .son1 .neikuan{
+	width:1226px;
+	height:234px;
+	margin:0 auto;
+	/*background-color: pink;*/
+	/*display: flex;*/
+	/*justify-content: space-between;*/
+}
+.header .nav .son-box a  ul{
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+}
+
+.header .nav .son-box a  ul li{
+	width:180px;
+	height:234px;
+	text-align: center;
+	position: relative;
+	padding: 35px 10px;
+
+	/*background-color: red;*/
+}
+.header .nav .son-box a  ul li:before{
+	content: "";
+	width:1px;
+	height:100px;
+	position: absolute;
+	top:35px;
+	right:0;
+	background-color: #e0e0e0;
+}
+.header .nav .son-box a  ul li h3{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: 400;
+	color:#333;
+	margin-top:-30px;
+}
+.header .nav .son-box a  ul li p{
+	font-size: 12px;
+	height: 20px;
+	line-height: 20px;
+}
+.header .nav .son-box a  ul li .xinp{
+	width:65px;
+	height:18px;
+	padding:1px 10px;
+	border: 1px solid #ff6700;
+	color: #ff6700;
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	margin: 0 auto;
+	line-height: 18px;
 }
 .header .nav a:hover{
 	color: #ff6700;
@@ -309,7 +373,8 @@ input.text{
 	display: block;
 	position: absolute;
 	top:0;
-	left:990px;
+	left:0;
+	opacity: 0;
 }
 .banner .list{
 	width: 236px;
@@ -471,12 +536,14 @@ input.text{
 } */
 .channel{
 	width: 100%;
+	background-color: #fff;
 
 }
 .channel .container{
 	width: 1226px;
 	margin-top: 20px;
 	overflow: hidden;
+	background-color: #fff;
 }
 .channel .list{
 	width: 316px;
@@ -1674,7 +1741,7 @@ input.text{
 	border: none;
 }
 footer{
-	margin-top: 20px;
+	margin-top: 60px;
 	width: 100%;
 	background-color: #fff;	 
 }
@@ -1711,7 +1778,7 @@ footer .center{
 	height: 192px;
 	
 	border-top: 1px solid #b0b0b0;
-	border-bottom: 1px solid #b0b0b0;
+	/*border-bottom: 1px solid #b0b0b0;*/
 	background-color: #fff;
 }
 footer .center .text{
@@ -1812,8 +1879,17 @@ footer .center .text .btn:hover{
 }
 footer .bottom{
 	width: 100%;
-	margin-top: 20px;
+	height:166px;
+	/*margin-top: 20px;*/
 	background-color: #f5f5f5;
+	/*margin:20px auto;*/
+	/*box-sizing: border-box;*/
+}
+footer .bottom .bottom-box{
+	width:1226px;
+	height:166px;
+	margin:20px auto 0;
+	padding:20px 0;
 }
 footer .bottom .logo{
 	width: 57px;
@@ -1873,29 +1949,31 @@ footer .slogan{
 }
 .back{
 	width: 84px;
-	height: 380px;
+	/*height: 380px;*/
 	background-color: #fff;
 	position: fixed;
-	bottom: 50px;
+	bottom: 200px;
 	right: 0;
+	z-index:999;
+
+	/*box-sizing: border-box;*/
 }
 .back .bar-link{
-	width: 82px;
+	width: 84px;
 	height: 90px;
 	overflow: hidden;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+	/*margin-top: 20px;*/
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	
 
 }
-.back .bar-link:nth-child(2){
-	border-top: none;
-}
 .back .bar-link:nth-child(3){
-	border-top: none;
+	border-bottom: none;
 }
+
 .back .bar-link .bar-sort{
 	display: block;
-	width: 82px;
+	width: 84px;
 	height: 90px;
 	overflow: hidden;
 	text-decoration: none;
@@ -1903,8 +1981,11 @@ footer .slogan{
 	text-align: center;
 	color: #333;
 	opacity: 0.6;
-	padding-top: 20px;
-	cursor: pointer;
+	margin-top: 20px;
+	border:none;
+}
+.back .bar-link .bar-sort:nth-child(4){
+	margin: 0;
 }
 .back .bar-link .bar-sort:hover{
 	color: #ff6700;
@@ -1920,7 +2001,41 @@ footer .slogan{
 .back .bar-link .bar-sort p{
 
 	display: block;
-	width: 82px;
+	width: 84px;
+	height: 20px;
+	font-size: 14px;
+	text-align: center;
+	margin-top: 8px;
+}
+
+.back1{
+	width: 84px;
+	height: 90px;
+	overflow: hidden;
+	background-color: #fff;
+	/*margin-top: 20px;*/
+	/*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
+	position: fixed;
+	bottom: 90px;
+	right: 0;
+	cursor: pointer;
+}
+.back1  .icon-arrow-circle-o-top{
+	display: block;
+	width: 84px;
+	height: 90px;
+	overflow: hidden;
+	text-decoration: none;
+	font-size: 28px;
+	text-align: center;
+	color: #333;
+	opacity: 0.6;
+	margin-top: 20px;
+	border:none;
+}
+.back1  .icon-arrow-circle-o-top p{
+	display: block;
+	width: 84px;
 	height: 20px;
 	font-size: 14px;
 	text-align: center;

@@ -14,11 +14,12 @@
 // second:时间间隔函数的时间
 
 //透明度轮播图
-function Olunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
+function Olunbo(imgs,dots,banner,leftbtn,rightbtn,activeClass="active",second="2000") {
     //透明度轮播图
     //1.移入轮播点显示对应的图片
     //2 自动轮播
     let num=0;
+    let flag=true;
     imgs[0].style.opacity=1;
     dots[0].classList.add(activeClass);
     //遍历得到每一个轮播点
@@ -44,15 +45,50 @@ function Olunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
     let t=setInterval(move,second);
     function move() {
         num++;
-        if(num==bannerNum){
+        if(num==imgs.length){
             num=0;
         }
         for(let j=0;j<imgs.length;j++){
             dots[j].classList.remove(activeClass);
             imgs[j].style.opacity=0;
         }
-        imgs[num].style.opacity=1;
+        // imgs[num].style.opacity=1;
         dots[num].classList.add(activeClass);
+        animate(imgs[num],{opacity:1},function () {
+            flag=true;
+        });
+        //     animate(dots[num],{classListAdd:(activeClass)});
+        //
+    }
+    function moveL() {
+        num--;
+        if(num<0){
+            num=imgs.length-1;
+        }
+        for(let j=0;j<imgs.length;j++){
+            dots[j].classList.remove(activeClass);
+            imgs[j].style.opacity=0;
+        }
+        // imgs[num].style.opacity=1;
+        dots[num].classList.add(activeClass);
+        animate(imgs[num],{opacity:1},function () {
+            flag=true;
+        });
+        // animate(dots[num],{classListAdd:(activeClass)});
+    }
+    leftbtn.onclick=function(){
+        if(!flag){
+            return;
+        }
+        flag=false;
+        moveL();
+    }
+    rightbtn.onclick=function(){
+        if(!flag){
+            return;
+        }
+        flag=false;
+        move();
     }
     //鼠标移入停止
     banner.onmouseover=function () {
@@ -62,57 +98,13 @@ function Olunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
     banner.onmouseout=function () {
         t=setInterval(move,second);
     }
-}
-function Zlunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
-    //透明度轮播图
-    //1.移入轮播点显示对应的图片
-    //2 自动轮播
-    let num=0;
-    imgs[0].style.opacity=1;
-    dots[0].classList.add(activeClass);
-    //遍历得到每一个轮播点
-    for(let i=0;i<imgs.length;i++){
-        //点击每一个轮播点是发生的函数
-        dots[i].onclick=function () {
-            //遍历的
-            for(let j=0;j<imgs.length;j++){
-                //清除点击以外的所有类名
-                dots[j].classList.remove(activeClass);
-                //清除轮播点相对应图片所添加的透明度
-                imgs[j].style.opacity=0;
-            }
-            //给点击的轮播点添加类名
-            dots[i].classList.add(activeClass);
-            //给轮播点相对应的图片添加透明度
-            imgs[i].style.opacity=1;
-            num=i;
-        }
-    }
-
-    //自动轮播
-    let t=setInterval(move,second);
-    function move() {
-        num++;
-        if(num==bannerNum){
-            num=0;
-        }
-        for(let j=0;j<imgs.length;j++){
-            dots[j].classList.remove(activeClass);
-            imgs[j].style.opacity=0;
-        }
-        imgs[num].style.opacity=1;
-        dots[num].classList.add(activeClass);
-    }
-    //鼠标移入停止
-    banner.onmouseover=function () {
+    window.onfocus=function(){
         clearInterval(t);
     }
-    //鼠标移出，继续轮播
-    banner.onmouseout=function () {
+    window.onblur=function () {
         t=setInterval(move,second);
     }
 }
-
 //双下标轮播图
 // let imgs=document.querySelectorAll("img");
 // let dots=document.querySelectorAll("li");
@@ -131,19 +123,20 @@ function Zlunbo(imgs,dots,banner,bannerNum,activeClass="active",second="2000") {
 //widths:轮播图的宽度  parseInt 数值
 //activeClass: 轮播点选中的类名
 //second： 轮播时间
-function doublelunbo(imgs,dots,banner,leftBtn,rightBtn,widths,activeClass,second) {
+function doublelunbo(imgs, dots, banner, leftBtn, rightBtn, widths, activeClass, second) {
     //初始值
-    imgs[0].style.left="0";
+    imgs[0].style.left = "0";
     dots[0].classList.add(activeClass);
-    let now=0;
-    let next=0;
-    let flag=false;
+    let now = 0;
+    let next = 0;
+    let flag = false;
     //now = 0    next =0
 
     //               ++
     // left 0          left1200
     //left-1200        left:0
-    let t=setInterval(move,second);
+    let t = setInterval(move, second);
+
     function move() {
         next++;
         if (next == imgs.length) {
@@ -159,97 +152,108 @@ function doublelunbo(imgs,dots,banner,leftBtn,rightBtn,widths,activeClass,second
         dots[next].classList.add(activeClass);
         now = next;
     }
-    clearInterval(t);
-        function moveL() {
-            next--;
-            if (next < 0) {
-                next = imgs.length-1;
-            }
-            imgs[next].style.left=-widths+"px";
-            animate(imgs[now],{left:widths});
-            animate(imgs[next],{left:0},function () {flag=true;});
-            dots[now].classList.remove(activeClass);
-            dots[next].classList.add(activeClass);
-            now=next;
+
+    // clearInterval(t);
+
+    function moveL() {
+        next--;
+        if (next < 0) {
+            next = imgs.length - 1;
         }
+        imgs[next].style.left = -widths + "px";
+        animate(imgs[now], {left: widths});
+        animate(imgs[next], {left: 0}, function () {
+            flag = true;
+        });
+        dots[now].classList.remove(activeClass);
+        dots[next].classList.add(activeClass);
+        now = next;
+    }
 
-        leftBtn.onclick=function () {
-            if(next==0){
-                return;
-            }
-            if(!flag){
-                return;
-            }
-            flag=false;
-            moveL();
+    leftBtn.onclick = function () {
+        if (next == 0) {
+            return;
         }
-
-        rightBtn.onclick=function () {
-            if(next==imgs.length-1){
-                return;
-            }
-            move();
+        if (!flag) {
+            return;
         }
+        flag = false;
+        moveL();
+        clearInterval(t);
+    }
 
-        //开关
-        //flag=false   ！flag=true
-        //防止重复点击时出现的快速轮播的现象
-        //默认开关是打开的，可以点击左右箭头
+    rightBtn.onclick = function () {
+        if (next == imgs.length - 1) {
+            return;
+        }
+        if (!flag) {
+            return;
+        }
+        flag = false;
+        move();
+        clearInterval(t);
+    }
 
-        // leftBtn.onclick=function(){
-            //判断开关是否开启
-            //开关开启时，！flag=false
-            //不执行return， 执行flag=false，move(); move执行完执行flag=true
-            //开关关闭时，不要点击
-            //！flag=true，执行return
-        //     if(next==0){
-        //         return;
-        //     }
-        //     if(!flag){
-        //         return;
-        //     }
-        //
-        //     flag=false;
-        //     moveL();
-        // }
-        // rightBtn.onclick=function(){
-        //     if(next==imgs.length-1){
-        //         return;
-        //     }
-        //     if(!flag){
-        //         return;
-        //     }
-        //     flag=false;
-        //     move();
-        // }
-        banner.onmouseenter=function () {
+    //开关
+    //flag=false   ！flag=true
+    //防止重复点击时出现的快速轮播的现象
+    //默认开关是打开的，可以点击左右箭头
+
+    // leftBtn.onclick=function(){
+    //判断开关是否开启
+    //开关开启时，！flag=false
+    //不执行return， 执行flag=false，move(); move执行完执行flag=true
+    //开关关闭时，不要点击
+    //！flag=true，执行return
+    //     if(next==0){
+    //         return;
+    //     }
+    //     if(!flag){
+    //         return;
+    //     }
+    //
+    //     flag=false;
+    //     moveL();
+    // }
+    // rightBtn.onclick=function(){
+    //     if(next==imgs.length-1){
+    //         return;
+    //     }
+    //     if(!flag){
+    //         return;
+    //     }
+    //     flag=false;
+    //     move();
+    // }
+    banner.onmouseenter = function () {
+        clearInterval(t);
+    }
+    banner.onmouseleave = function () {
+        t=setInterval(move,second);
+    }
+
+    //鼠标点击，变颜色
+    for (let i = 0; i < imgs.length; i++) {
+        dots[i].onclick = function () {
+            for (let j = 0; j < imgs.length; j++) {
+                dots[j].classList.remove(activeClass);
+                imgs[j].style.left = widths + "px";
+            }
+            dots[i].classList.add(activeClass);
+            imgs[i].style.left = 0;
+            now = i;
+            next = i;
             clearInterval(t);
         }
-        banner.onmouseleave=function () {
-            // t=setInterval(move,second);
-        }
-
-        //鼠标点击，变颜色
-        for(let i=0;i<imgs.length;i++){
-            dots[i].onclick=function(){
-                for(let j=0;j<imgs.length;j++){
-                    dots[j].classList.remove(activeClass);
-                    imgs[j].style.left=widths+"px";
-                }
-                dots[i].classList.add(activeClass);
-                imgs[i].style.left=0;
-                now=i;
-                next=i;
-            }
-        }
-        //窗口失去焦点时，停止时间函数
-        window.onblur=function () {
-            clearInterval(t);
-        }
-        //窗口获得焦点时，继续时间函数
-        window.onfocus=function () {
-            t=setInterval(move,second);
-        }
+    }
+    //窗口失去焦点时，停止时间函数
+    window.onblur = function () {
+        clearInterval(t);
+    }
+    //窗口获得焦点时，继续时间函数
+    window.onfocus = function () {
+        t = setInterval(move, second);
+    }
 
 
 }

@@ -6,9 +6,8 @@ window.onload=function () {
     let rightbtn = document.querySelector(".banner .container .rightBtn");
     let widths = parseInt(getComputedStyle(banner, null).width);
     // console.log(imgs,dots,leftbtn,rightbtn,widths);
-
-    doublelunbo(imgs, dots, banner, leftbtn, rightbtn, 990, "active", 2000);
-
+    // doublelunbo(imgs, dots, banner, leftbtn, rightbtn, 990, "active", 2000);
+    Olunbo(imgs,dots,banner,leftbtn,rightbtn);
     function doublelunbo(imgs, dots, banner, leftBtn, rightBtn, widths, activeClass, second) {
         //初始值
         imgs[0].style.left = "0";
@@ -143,7 +142,6 @@ window.onload=function () {
 
 
     }
-
 
     let lunbo1 = document.querySelectorAll(".content ul li .lun5");
     let dots1= document.querySelectorAll(".content ul li .pagers .dot0");
@@ -363,7 +361,7 @@ window.onload=function () {
     // console.log(lis1,son1);
     xuanxiangka(lis1,son1);
 
-    let back = document.querySelector(".back");
+    let back = document.querySelector(".back1");
     // console.log(back);
     backs(back);
     // back.onclick = function () {
