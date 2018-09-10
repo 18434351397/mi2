@@ -102,7 +102,7 @@ function Olunbo(imgs,dots,banner,leftbtn,rightbtn,activeClass="active",second="2
         clearInterval(t);
     }
     window.onblur=function () {
-        t=setInterval(move,second);
+        // t=setInterval(move,second);
     }
 }
 //双下标轮播图

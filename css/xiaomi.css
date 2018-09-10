@@ -1406,18 +1406,32 @@ input.text{
 .box-forth li .text p{
 	font-size: 14px;
 	color: #333;
+	/*text-after-overflow: ellipsis;*/
+	/*display: -webkit-box;*/
+	/*-webkit-line-clamp: 3;*/
+	/*!*white-space: nowrap;*!*/
+	/*-webkit-box-orient: vertical;*/
+	/*overflow: hidden;*/
+	/*text-overflow: ellipsis;*/
+
+	overflow:hidden;
+	/*文本超出，以省略号代替*/
+	text-overflow:ellipsis;
+	/*设置如何处理元素内的空白: 规定段落中的文本不进行换行*/
+	white-space:nowrap;
+
 }
 .box-forth li .author{
 	width: 296px;
 	height: 20px;
 	color: #b0b0b0;
-	padding: 20px;
+	padding: 0px 20px;
 	font-size: 12px;
 }
 .box-forth li .info{
 	width: 296px;
 	height: 20px;
-	padding: 20px;
+	padding: 10px 20px;
 }
 .box-forth li .info h3{
 	font-size: 14px;
@@ -1851,30 +1865,22 @@ footer .center .text p:nth-child(2){
 footer .center .text .contact .btn{
 	display: block;
 	width: 120px;
-	height: 24px;
-	/* width: 100px; */
-	/* height: 28px; */
-	
-	/* margin-right: 100px; */
-	/* float: right; */
+	height: 30px;
+	font-size: 12px;
 	text-decoration: none;
-	margin: 0 auto;
-	margin-top: 30px;
+	margin: 30px auto 0;
 	text-align: center;
-	line-height: 24px;
+	line-height: 30px;
 	border: 1px solid orange;
 	color: orange;
-	padding-left: 15px;
-	background-image: url('../img/wechat-white.png');
-	
-	background-size:20px 20px; 
-	background-repeat: no-repeat;
-	background-position: 13px 1px;
+	box-sizing: border-box;
+
 }
 footer .center .text .btn:hover{
-	background-color: orange;
+	background-color: #ff6700;
 	color: #fff;
-	background-image: url('../img/wechat-black.png');
+	border:none;
+	transition: all .5s;
 
 }
 footer .bottom{
