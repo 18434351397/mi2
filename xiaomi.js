@@ -364,6 +364,16 @@ window.onload=function () {
     let back = document.querySelector(".back1");
     // console.log(back);
     backs(back);
+
+    window.onscroll=function () {
+        let gd=document.body.scrollTop||document.documentElement.scrollTop;
+        console.log(gd);
+        if(gd>1800){
+            back.style.opacity=1;
+        }else{
+            back.style.opacity=0;
+        }
+    }
     // back.onclick = function () {
     //     animate(document.body, {scrollTop: 0}, 600);
     //     animate(document.documentElement, {scrollTop: 0}, 600);
