@@ -398,4 +398,37 @@ window.onload=function () {
         }
     }
 
+    let spans=document.querySelectorAll(".Time .box span");
+    // console.log(spans);
+    setDate();
+    setInterval(setDate,1000);
+    function setDate(){
+        let arr=fn();
+        // console.log(arr);
+        spans.forEach((v,index)=>{
+            v.innerHTML=arr[index]
+    })
+    }
+
+    function fn() {
+        let arr=[];
+        let now=new Date();
+        let future=new Date(2018,9,2);
+        let time=Math.floor((future.getTime()-now.getTime())/1000);
+        // console.log(time);
+        // let month=Math.floor(time/(30*24*60*60));
+        // // console.log(month);
+        // arr.push(month);
+        // let day=Math.floor(time%(30*24*60*60)/(24*60*60));
+        // arr.push(day);
+        let hour=Math.floor(time%(30*24*60*60)%(24*60*60)/(60*60));
+        arr.push(hour);
+        let fz=Math.floor(time%(30*24*60*60)%(24*60*60)%(60*60)/60);
+        arr.push(fz);
+        let miao=Math.floor(time%(30*24*60*60)%(24*60*60)%(60*60)%60);
+        arr.push(miao);
+        return(arr);
+
+    }
+
 }

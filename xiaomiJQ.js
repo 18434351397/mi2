@@ -198,18 +198,16 @@ $(function () {
     //商品移入移出
     let parent=$(".box-second .more a");
     let son=$(".box-second .right1");
-    // console.log(parent, son);
     parent.mouseenter(function () {
         let i=$(this).index();
-        // $(this).removeClass("hot");
-        // $(this).addClass("hot");
         parent.removeClass("hot").eq(i).addClass("hot");
-
         son.css("display","none").eq(i).css("display","block");
     })
     parent.triggerHandler("mouseenter");
 
 
+
+    //闪购
     let button=$(".more .lb1");
     let button1=$(".more .rb1");
     let miList=$(".miList1");
