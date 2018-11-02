@@ -263,7 +263,7 @@ $(function () {
     function fn() {
         let arr=[];
         let now=new Date();
-        let future=new Date(2018,9,2);
+        let future=new Date(2018,11,30);
         let time=Math.floor((future.getTime()-now.getTime())/1000);
         // console.log(time);
         // let month=Math.floor(time/(30*24*60*60));
